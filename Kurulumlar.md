@@ -68,7 +68,15 @@ python data/clean.py
 
 `ml-32m/` ham verisini okur, temizler ve `data/processed/` altına işlenmiş CSV'leri yazar. (32M satır için 1-2 dk sürer.)
 
-### 2d. KNN modelini eğit
+### 2d. tmdbId bilgisini ekle (ZORUNLU)
+
+```powershell
+python add_tmdbid.py
+```
+
+`movie_links.csv` dosyasına `tmdbId` sütununu ekler. **Bu adım atlanırsa API açılırken `KeyError: 'tmdbId'` hatası verir ve hiç başlamaz** — çünkü `recommender.py` bu sütunu okur.
+
+### 2e. KNN modelini eğit
 
 ```powershell
 python model/train.py
@@ -98,7 +106,7 @@ npm run dev
 
 Vite dev sunucusu açılır (genelde `http://localhost:5173`). Tarayıcıda bu adresi aç.
 
-> **Not:** Frontend'in API isteklerini doğru porta (`http://127.0.0.1:8000`) gönderdiğinden emin ol. Backend çalışmıyorsa öneri/istatistik sayfaları boş gelir.
+> **Not:** Frontend, API adresini `http://localhost:8000` olarak sabit kullanır (`src/services/api.ts`) — ek ayar gerekmez. Backend bu portta çalışmıyorsa öneri/istatistik sayfaları boş gelir. Posterler `metahub.space` üzerinden çekilir, TMDB API anahtarı gerekmez.
 
 ---
 
@@ -112,6 +120,7 @@ python -m venv venv
 .\venv\Scripts\Activate
 pip install -r requirements.txt
 python data/clean.py
+python add_tmdbid.py
 python model/train.py
 uvicorn api.main:app --reload
 
