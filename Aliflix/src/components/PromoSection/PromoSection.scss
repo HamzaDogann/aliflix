@@ -1,0 +1,126 @@
+@use '../../styles/variables' as *;
+
+.promo {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 $space-8 $space-8;
+  border-radius: $radius-2xl;
+  border: 1px solid rgba(0, 120, 255, 0.15);
+
+  @media (max-width: #{$bp-tablet}) {
+    margin: 0 $space-4 $space-6;
+    border-radius: $radius-xl;
+  }
+
+  // ── Arka plan film kolajı ────────────────────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    pointer-events: none;
+    filter: brightness(0.35) saturate(0.7);
+  }
+
+  &__bg-tile {
+    background-size: cover;
+    background-position: center;
+
+    &--empty {
+      background: $bg-card;
+    }
+  }
+
+  // ── Blue gradient overlay ───────────────────────────────────────────────────
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(4, 6, 14, 0.96) 0%,
+        rgba(0, 30, 80, 0.88) 40%,
+        rgba(0, 80, 180, 0.72) 72%,
+        rgba(0, 120, 255, 0.55) 100%),
+      linear-gradient(to bottom,
+        rgba(4, 6, 14, 0.6) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(4, 6, 14, 0.7) 100%);
+    pointer-events: none;
+  }
+
+  // ── İçerik ─────────────────────────────────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-8;
+    padding: $space-12 $space-16;
+
+    @media (max-width: #{$bp-tablet}) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: $space-8 $space-6;
+      gap: $space-6;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    max-width: 680px;
+  }
+
+  &__title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: $text-primary;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: $space-3;
+  }
+
+  &__desc {
+    font-size: $text-base;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+
+    strong {
+      color: $accent-cyan;
+      font-weight: 700;
+    }
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    padding: $space-4 $space-8;
+    border-radius: $radius-pill;
+    font-size: $text-base;
+    font-weight: 700;
+    color: $text-primary;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 120, 255, 0.35);
+    }
+
+    @media (max-width: #{$bp-tablet}) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

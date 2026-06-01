@@ -1,0 +1,2 @@
+// Features klasörü - Her feature kendi klasöründe olacak
+// Örnek: src/features/home, src/features/movies, src/features/recommendations vb.

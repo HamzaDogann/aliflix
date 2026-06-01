@@ -1,0 +1,259 @@
+@use '../../styles/variables' as *;
+
+.home {
+  &__hero {
+    position: relative;
+    min-height: 90vh;
+    max-height: 960px;
+    display: flex;
+    align-items: flex-end;
+    perspective: 1400px;
+    overflow: hidden;
+    background: linear-gradient(125deg, #04060c 0%, #070b12 58%, #05070f 100%);
+    margin-top: calc(-1 * #{$navbar-top-height});
+    padding: calc(#{$space-16} + #{$navbar-top-height}) $space-8 $space-12;
+
+    @media (max-width: #{$bp-tablet}) {
+      margin-top: calc(-1 * #{$navbar-height});
+      padding: calc(#{$space-16} + #{$navbar-height}) $space-4 $space-10;
+    }
+  }
+
+  &__hero-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 48%, rgba(0, 100, 255, 0.18) 0%, transparent 72%),
+      linear-gradient(to top, rgba(3, 4, 8, 0.92) 8%, rgba(3, 4, 8, 0.52) 45%, rgba(3, 4, 8, 0.8) 100%);
+  }
+
+  &__hero-collage {
+    position: absolute;
+    top: -10%;
+    left: -14%;
+    right: -14%;
+    bottom: -42%;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(92px, 1fr));
+    grid-auto-rows: 152px;
+    gap: 10px;
+    transform: rotateZ(-11deg) rotateX(12deg) skewX(-8deg) scale(1.3);
+    transform-origin: center bottom;
+    filter: saturate(0.88) contrast(1.04) brightness(0.52) blur(1.5px);
+    pointer-events: none;
+    z-index: 1;
+
+    @media (max-width: #{$bp-tablet}) {
+      top: -8%;
+      left: -16%;
+      right: -16%;
+      bottom: -38%;
+      grid-template-columns: repeat(7, minmax(80px, 1fr));
+      grid-auto-rows: 136px;
+      transform: rotateZ(-9deg) rotateX(10deg) skewX(-7deg) scale(1.22);
+    }
+
+    @media (max-width: #{$bp-mobile}) {
+      top: -6%;
+      left: -18%;
+      right: -18%;
+      bottom: -34%;
+      grid-template-columns: repeat(6, minmax(76px, 1fr));
+      grid-auto-rows: 120px;
+      transform: rotateZ(-7deg) rotateX(8deg) skewX(-6deg) scale(1.16);
+    }
+  }
+
+  &__hero-collage-tile {
+    --float-offset: 0px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.46);
+    animation: hero-float 12s ease-in-out infinite;
+
+    &:not([style*='background-image']) {
+      background: linear-gradient(135deg, #17212f 0%, #0d131e 100%);
+    }
+
+    &--r0 {
+      --float-offset: 8px;
+      animation-delay: 0s;
+    }
+
+    &--r1 {
+      --float-offset: -10px;
+      animation-delay: -2.2s;
+    }
+
+    &--r2 {
+      --float-offset: 14px;
+      animation-delay: -4.1s;
+    }
+
+    &--r3 {
+      --float-offset: -6px;
+      animation-delay: -5.8s;
+    }
+  }
+
+  &__hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: $content-max-width;
+    margin-left: $content-left-offset;
+    margin-bottom: $space-16;
+
+    @media (max-width: #{$bp-tablet}) {
+      margin-left: 0;
+      margin-bottom: $space-10;
+    }
+  }
+
+  &__hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1 $space-3;
+    border-radius: $radius-pill;
+    font-size: $text-xs;
+    font-weight: 600;
+    background: rgba(0, 120, 255, 0.15);
+    color: $accent-cyan;
+    border: 1px solid rgba(0, 198, 255, 0.2);
+    margin-bottom: $space-4;
+  }
+
+  &__hero-title {
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: $space-4;
+
+    span {
+      background: linear-gradient(135deg, #0078FF, #00C6FF, #00E492);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__hero-sub {
+    font-size: $text-lg;
+    color: $text-muted;
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: $space-6;
+  }
+
+  &__hero-actions {
+    display: flex;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__hero-btn {
+    padding: $space-4 $space-8;
+    min-width: 220px;
+    min-height: 58px;
+    border-radius: $radius-pill;
+    font-size: $text-base;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px) saturate(130%);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all $transition-fast;
+
+    &--primary {
+      background: linear-gradient(135deg, rgba(0, 120, 255, 0.62), rgba(0, 198, 255, 0.56), rgba(0, 228, 146, 0.52));
+      color: $text-primary;
+      border-color: rgba(167, 218, 255, 0.42);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 120, 255, 0.25);
+      }
+    }
+
+    &--secondary {
+      background: rgba(14, 20, 30, 0.45);
+      color: $text-secondary;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+
+      &:hover {
+        border-color: rgba(0, 198, 255, 0.38);
+        color: $text-primary;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__stats {
+    display: flex;
+    gap: 1px;
+    background: $border-subtle;
+    border-top: 1px solid $border-subtle;
+    border-bottom: 1px solid $border-subtle;
+  }
+
+  &__stat {
+    flex: 1;
+    padding: $space-4 $space-6;
+    background: $bg-surface;
+    text-align: center;
+
+    &-value {
+      font-size: $text-xl;
+      font-weight: 800;
+      color: $text-primary;
+      letter-spacing: -0.02em;
+    }
+
+    &-label {
+      font-size: $text-xs;
+      color: $text-disabled;
+      margin-top: 2px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    &:hover {
+      background: $bg-card;
+    }
+
+    transition: background $transition-fast;
+
+    @media (max-width: #{$bp-mobile}) {
+      padding: $space-3 $space-2;
+
+      &-value {
+        font-size: $text-lg;
+      }
+    }
+  }
+
+  &__rows {
+    padding: $space-8 0;
+  }
+}
+
+@keyframes hero-float {
+  0% {
+    transform: translateY(var(--float-offset));
+  }
+
+  50% {
+    transform: translateY(calc(var(--float-offset) - 10px));
+  }
+
+  100% {
+    transform: translateY(var(--float-offset));
+  }
+}

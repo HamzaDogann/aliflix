@@ -1,0 +1,179 @@
+@use '../../styles/variables' as *;
+
+// ── Hero Banner ─────────────────────────────────────────────────────────────
+.cat-hero {
+  position: relative;
+  margin-top: calc(-1 * #{$navbar-top-height});
+  height: calc(320px + #{$navbar-top-height});
+  overflow: hidden;
+
+  &--empty {
+    background: linear-gradient(135deg, #04060c, #070b12);
+  }
+
+  &__bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.28) blur(4px);
+    transform: scale(1.04);
+  }
+
+  &__bg-ph {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.3);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, transparent 0%, $bg-page 100%),
+      linear-gradient(to right, rgba($bg-page, 0.6) 0%, transparent 60%);
+  }
+
+  @media (max-width: #{$bp-tablet}) {
+    margin-top: calc(-1 * #{$navbar-height});
+    height: calc(220px + #{$navbar-height});
+  }
+}
+
+// ── Page body ────────────────────────────────────────────────────────────────
+.cat-page {
+  &__body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-8 $space-16;
+    margin-top: -160px;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: #{$bp-tablet}) {
+      padding: 0 $space-4 $space-10;
+      margin-top: -100px;
+    }
+  }
+
+  &__head {
+    margin-bottom: $space-8;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-radius: $radius-pill;
+    background: rgba(8, 11, 18, 0.72);
+    border: 1px solid rgba(167, 218, 255, 0.22);
+    color: $text-secondary;
+    font-size: $text-sm;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(14px) saturate(130%);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+    transition: transform $transition-fast, border-color $transition-fast, color $transition-fast, background $transition-fast, box-shadow $transition-fast;
+    margin-bottom: $space-5;
+
+    &:hover {
+      color: $text-primary;
+      border-color: rgba(0, 198, 255, 0.5);
+      background: rgba(12, 18, 28, 0.86);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+    }
+  }
+
+  &__back-icon {
+    font-size: 1.15em;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    color: $text-primary;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: $space-2;
+  }
+
+  &__count {
+    font-size: $text-sm;
+    color: $text-disabled;
+    font-weight: 500;
+  }
+
+  // ── Film grid ───────────────────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-8 $space-6;
+
+    @media (max-width: #{$bp-desktop}) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-6 $space-4;
+    }
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-4 $space-3;
+    }
+
+    :global(.movie-card) {
+      width: 100% !important;
+    }
+
+    :global(.movie-card__poster) {
+      width: 100% !important;
+    }
+  }
+
+  // ── Skeleton loading ─────────────────────────────────────────────────────
+  &__loading {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-8 $space-6;
+
+    @media (max-width: #{$bp-desktop}) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__skeleton {
+    height: 300px;
+    border-radius: $radius-lg;
+    background: linear-gradient(90deg,
+        $bg-card 25%,
+        $bg-elevated 50%,
+        $bg-card 75%);
+    background-size: 200% 100%;
+    animation: cat-shimmer 1.4s infinite linear;
+  }
+
+  &__empty {
+    color: $text-muted;
+    font-size: $text-base;
+    text-align: center;
+    padding: $space-16;
+  }
+}
+
+@keyframes cat-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

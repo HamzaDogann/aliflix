@@ -1,0 +1,24 @@
+# ===== Python =====
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# ===== Node / Frontend =====
+node_modules/
+Aliflix/dist/
+
+# ===== Büyük veri dosyaları (GitHub 100MB sınırı — yerelde üretilir) =====
+# Ham MovieLens veri seti (grouplens.org'dan indirilir)
+ml-32m/
+# clean.py tarafından üretilen işlenmiş CSV'ler
+data/processed/
+# train.py tarafından üretilen model (~711 MB)
+model/knn_model.pkl
+
+# ===== Sistem =====
+.DS_Store
+Thumbs.db
+
+# Claude Code yerel ayarlari
+.claude/

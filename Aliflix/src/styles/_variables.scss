@@ -1,0 +1,71 @@
+// ── Colors ────────────────────────────────────────────────────────────────────
+$bg-page: #080B10;
+$bg-surface: #0D1117;
+$bg-card: #131B26;
+$bg-elevated: #1A2535;
+$border-subtle: #0F1E2E;
+$border-default: #162840;
+$border-focus: rgba(0, 198, 255, 0.4);
+
+$accent-blue: #0078FF;
+$accent-cyan: #00C6FF;
+$accent-green: #00E492;
+
+$text-primary: #FFFFFF;
+$text-secondary: #D8E4F0;
+$text-muted: #7A9BB5;
+$text-disabled: #4A6580;
+
+$danger: #FF4757;
+$warning: #FFB800;
+$success: #00E492;
+
+// ── Spacing ───────────────────────────────────────────────────────────────────
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+
+// ── Typography ────────────────────────────────────────────────────────────────
+$font-sans: 'Figtree', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$text-xs: 11px;
+$text-sm: 13px;
+$text-base: 15px;
+$text-md: 17px;
+$text-lg: 20px;
+$text-xl: 24px;
+$text-2xl: 32px;
+$text-3xl: 40px;
+
+// ── Radius ────────────────────────────────────────────────────────────────────
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-2xl: 24px;
+$radius-pill: 9999px;
+
+// ── Transitions ───────────────────────────────────────────────────────────────
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// ── Breakpoints ───────────────────────────────────────────────────────────────
+$bp-mobile: 576px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-wide: 1440px;
+
+$navbar-height: 64px;
+$navbar-top-extra: 20px;
+$navbar-top-height: calc(#{$navbar-height} + #{$navbar-top-extra});
+
+// Content layout tokens (used to align hero slogan and navbar menu)
+$content-max-width: 600px;
+$content-left-offset: 100px;

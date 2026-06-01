@@ -1,0 +1,135 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background: $bg-surface;
+  border-top: 1px solid $border-subtle;
+  margin-top: $space-16;
+
+  &__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: $space-8 $space-8 $space-6;
+
+    @media (max-width: #{$bp-tablet}) {
+      padding: $space-6 $space-4;
+    }
+  }
+
+  // ── Üst satır ──────────────────────────────────────────────────────────────
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    flex-wrap: wrap;
+
+    @media (max-width: #{$bp-tablet}) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-5;
+    }
+  }
+
+  &__brand {
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  &__logo {
+    height: 32px;
+    opacity: 0.9;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  &__nav-link {
+    background: none;
+    border: none;
+    color: $text-muted;
+    font-size: $text-sm;
+    font-weight: 500;
+    cursor: pointer;
+    padding: $space-1 $space-3;
+    border-radius: $radius-md;
+    transition: color $transition-fast, background $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &__meta {
+    flex-shrink: 0;
+  }
+
+  &__badges {
+    display: flex;
+    gap: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__badge {
+    font-size: $text-xs;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: $radius-pill;
+    background: rgba(0, 120, 255, 0.1);
+    color: $accent-cyan;
+    border: 1px solid rgba(0, 198, 255, 0.18);
+    letter-spacing: 0.02em;
+  }
+
+  // ── Ayraç ──────────────────────────────────────────────────────────────────
+  &__divider {
+    height: 1px;
+    background: $border-subtle;
+    margin: $space-5 0 $space-4;
+  }
+
+  // ── Alt satır ──────────────────────────────────────────────────────────────
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-3;
+
+    @media (max-width: #{$bp-tablet}) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__copy {
+    font-size: $text-xs;
+    color: $text-disabled;
+  }
+
+  &__info-links {
+    display: flex;
+    gap: $space-4;
+    flex-wrap: wrap;
+  }
+
+  &__info-link {
+    font-size: $text-xs;
+    color: $text-disabled;
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $text-muted;
+    }
+  }
+}

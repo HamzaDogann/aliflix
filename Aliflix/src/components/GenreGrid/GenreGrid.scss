@@ -1,0 +1,97 @@
+@use '../../styles/variables' as *;
+
+.genre-grid {
+  padding: 0 $space-8 $space-8;
+
+  &__header {
+    margin-bottom: $space-5;
+  }
+
+  &__title {
+    font-size: calc(#{$text-md} * 1.5);
+    font-weight: 700;
+    color: $text-secondary;
+    line-height: 1;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: $space-3;
+
+    @media (max-width: #{$bp-tablet}) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: $space-2;
+    }
+
+    @media (max-width: #{$bp-mobile}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.genre-card {
+  position: relative;
+  height: 120px;
+  border-radius: $radius-lg;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  // Hafif noise texture hissi için subtle overlay
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.15) 100%
+    );
+    pointer-events: none;
+  }
+
+  // Hover'da sağ alta büyük emoji/ikon efekti (Spotify'daki gibi)
+  &::after {
+    content: '🎬';
+    position: absolute;
+    right: -6px;
+    bottom: -8px;
+    font-size: 52px;
+    opacity: 0.22;
+    transform: rotate(12deg);
+    transition: transform $transition-base, opacity $transition-base;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+
+    &::after {
+      transform: rotate(8deg) scale(1.12);
+      opacity: 0.32;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &__name {
+    position: relative;
+    z-index: 1;
+    font-size: $text-base;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 0 $space-3;
+  }
+}

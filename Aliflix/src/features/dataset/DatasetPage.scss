@@ -1,0 +1,125 @@
+@use '../../styles/variables' as *;
+
+.dataset {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: $space-8 $space-6;
+
+  &__header { margin-bottom: $space-8; }
+  &__page-title { font-size: $text-2xl; font-weight: 800; color: $text-primary; letter-spacing: -0.02em; }
+  &__page-sub { font-size: $text-base; color: $text-muted; margin-top: $space-2; }
+
+  &__stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-4;
+    margin-bottom: $space-8;
+    @media (max-width: #{$bp-tablet}) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: #{$bp-mobile}) { grid-template-columns: 1fr 1fr; }
+  }
+  &__stat-card {
+    background: linear-gradient(180deg, $bg-surface 0%, #0A1320 100%);
+    border: 1px solid $border-subtle;
+    border-radius: $radius-lg;
+    padding: $space-5 $space-6;
+    transition: all $transition-base;
+    &:hover { border-color: rgba(0,198,255,0.25); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,0.3), 0 0 24px rgba(0,198,255,0.08); }
+    &-icon { font-size: 22px; margin-bottom: $space-2; }
+    &-value { font-size: 26px; font-weight: 800; color: $text-primary; letter-spacing: -0.02em; }
+    &-label { font-size: $text-xs; font-weight: 500; color: $text-disabled; letter-spacing: 0.04em; margin-top: 3px; }
+  }
+
+  &__section {
+    margin-bottom: $space-8;
+    background: $bg-surface;
+    border: 1px solid $border-subtle;
+    border-radius: $radius-lg;
+    overflow: hidden;
+  }
+  &__section-head {
+    padding: $space-4 $space-6;
+    border-bottom: 1px solid $border-subtle;
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+  &__section-title { font-size: $text-md; font-weight: 700; color: $text-secondary; }
+  &__section-badge {
+    padding: 2px 8px;
+    border-radius: $radius-pill;
+    font-size: $text-xs;
+    font-weight: 600;
+    background: rgba(0,198,255,0.12);
+    color: $accent-cyan;
+    border: 1px solid rgba(0,198,255,0.2);
+  }
+
+  &__table-wrap { overflow-x: auto; }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+      font-size: $text-xs;
+      font-weight: 600;
+      color: $text-disabled;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: $space-3 $space-4;
+      border-bottom: 1px solid $border-subtle;
+      text-align: left;
+      background: #0A1320;
+    }
+    td {
+      font-size: $text-sm;
+      color: $text-secondary;
+      padding: $space-3 $space-4;
+      border-bottom: 1px solid rgba(15,30,46,0.5);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(0,198,255,0.03); }
+    .rank { color: $text-disabled; font-weight: 700; width: 40px; }
+    .rating { color: $warning; font-weight: 700; }
+    .count { color: $text-muted; }
+  }
+
+  &__cleaning {
+    padding: $space-6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-6;
+    @media (max-width: #{$bp-tablet}) { grid-template-columns: 1fr; }
+  }
+  &__cleaning-col {
+    &-title { font-size: $text-sm; font-weight: 700; letter-spacing: 0.04em; margin-bottom: $space-4; }
+    &--before .dataset__cleaning-col-title { color: $danger; }
+    &--after  .dataset__cleaning-col-title { color: $accent-green; }
+  }
+  &__cleaning-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: $space-3 0;
+    border-bottom: 1px solid $border-subtle;
+    &:last-child { border-bottom: none; }
+    &-label { font-size: $text-sm; color: $text-muted; }
+    &-value { font-size: $text-sm; font-weight: 700; color: $text-secondary; }
+  }
+  &__steps { padding: $space-6; display: flex; flex-direction: column; gap: $space-3; }
+  &__step {
+    display: flex; align-items: flex-start; gap: $space-3;
+    padding: $space-3 $space-4;
+    border-radius: $radius-md;
+    background: $bg-card;
+    border: 1px solid $border-subtle;
+    &-badge {
+      flex-shrink: 0;
+      padding: 2px 8px;
+      border-radius: $radius-sm;
+      font-size: $text-xs;
+      font-weight: 700;
+      background: rgba(0,228,146,0.12);
+      color: $accent-green;
+      border: 1px solid rgba(0,228,146,0.2);
+    }
+    &-text { font-size: $text-sm; color: $text-muted; line-height: 1.5; }
+    &-text strong { color: $text-secondary; }
+  }
+}
